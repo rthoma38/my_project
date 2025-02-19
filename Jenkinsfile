@@ -20,7 +20,7 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv(credentialsId: 'SonarQubeToken', installationName: 'SonarQubeScanner') {
-                    sh 'export SONAR_HOST_URL="http://sonarqube:9000" && sonar-scanner -Dsonar.projectKey=my_project -Dsonar.sources=/home/jenkins/my_project/src'
+                    sh 'export SONAR_HOST_URL="http://localhost:9000" && sonar-scanner -Dsonar.projectKey=my_project -Dsonar.sources=/home/jenkins/my_project/src'
                 }
             }
         }
