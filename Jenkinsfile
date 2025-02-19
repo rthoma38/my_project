@@ -19,7 +19,7 @@ pipeline {
 	}
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sqa_873515ff0915f3b6daa77f893fde4d0f27e0387f', installationName: 'SonarQubeScanner') {
+                withSonarQubeEnv(credentialsId: 'sqa_6c8cfdfd8b0331b359dd679c7d7d020c9bec44dc', installationName: 'SonarQubeScanner') {
                     sh 'sonar-scanner -Dsonar.projectKey=my_project -Dsonar.sources=/home/jenkins/my_project/src'
                 }
             }
