@@ -20,8 +20,7 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
                 withSonarQubeEnv(credentialsId: 'SonarQubeToken', installationName: 'SonarQubeScanner') {
-                    sh 'echo $PATH'
-		    sh 'sonar-scanner -Dsonar.projectKey=my_project -Dsonar.sources=/home/jenkins/my_project/src'
+                    sh 'export PATH=$PATH:/opt/sonar-scanner/bin && sonar-scanner -Dsonar.projectKey=my_project -Dsonar.sources=/home/jenkins/my_project/src'
                 }
             }
         }
