@@ -17,12 +17,10 @@ pipeline {
                 sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image web-app'
             }
 	}
-           stage('SonarQube analysis') {
-            steps {
-                withSonarQubeEnv(credentialsId: 'SonarQubeToken', installationName: 'SonarQubeScanner') {
-                    script {
-                        def scannerHome = tool 'SonarQubeScanner'
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=my_python_project -Dsonar.sources=/home/jenkins/my_project/src"
+        steps('SonarQube Analysis') {
+   		def scannerHome = tool 'SonarQubeScanner';
+   		withSonarQubeEnv('SonarQubeScanner') {
+      			sh "${scannerHome}/bin/sonar-scanner"
                     }
                 }
             }
