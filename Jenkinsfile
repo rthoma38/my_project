@@ -22,7 +22,7 @@ pipeline {
                 withSonarQubeEnv(credentialsId: 'SonarQubeToken', installationName: 'SonarQubeScanner') {
                     script {
                         def scannerHome = tool 'SonarQubeScanner'
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=my_python_project -Dsonar.sources=/home/jenkins/my_python_project/src"
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=my_python_project -Dsonar.sources=/home/jenkins/my_project/src"
                     }
                 }
             }
